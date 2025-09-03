@@ -1,15 +1,17 @@
 # Password Generator API
 
-A simple Password Generator API built with __**Python**__ and __**Flask**__.
-It generates random passwords containing both letters and symbols, with customizable length.
+A simple **Password Generator API** built with **Python** and **Flask**.  
+It generates random passwords with customizable **length**, **symbols**, and **uppercase letters**.
+
 
 ## Features
 
-- Generate strong random passwords.
-- Customize password length via query parameter.
-- Built with __**Flask**__ and __**OOP**__ principles.
-- Easy to run locally with venv.
-- Ready for extension and deployment.
+- Generate strong random passwords
+- Customize length, symbols, and uppercase usage via query parameters
+- Built with **Flask** and **OOP principles**
+- Easy to run locally with `venv`
+- Ready for extension and deployment
+
 
 ## Installation
 
@@ -36,9 +38,10 @@ source .venv/bin/activate   # Linux/macOS
 pip install -r requirements.txt
 ```
 
+
 ## Usage
 
-### 1. Run the Flask server:
+Run the Flask server:
 
 ```
 python app.py
@@ -50,23 +53,76 @@ By default, the API will run on:
 http://127.0.0.1:5000
 ```
 
-### 2. API Endpoint
+## API Endpoint
 
-Parameters:
+### Base URL
 
-| Name   | Type | Default | Description            |
-| ------ | ---- | ------- | ---------------------- |
-| length | int  | 12      | Length of the password |
+```
+/generate_password
+```
 
-Request example:
+### Parameters
+
+| Name          | Type | Default | Description                     |
+| ------------- | ---- | ------- | ------------------------------- |
+| length        | int  | 12      | Length of the password          |
+| use_symbols   | bool | true    | Configures the use of symbols   |
+| use_uppercase | bool | true    | Configures the use of uppercase |
+
+
+## Examples
+
+### Default request
+
+```
+http://127.0.0.1:5000/generate_password
+```
+```
+{
+  "password": "*wM%D#?uwC$?"
+}
+```
+
+### With custom length
+
 ```
 http://127.0.0.1:5000/generate_password?length=16
 ```
-
-Response example:
-
-``` json
+```
 {
-  "password": "aB@dE!qR9kM"
+  "password": "!A?a-&tH&j*#AhH&"
+}
+```
+
+### Without symbols
+
+```
+http://127.0.0.1:5000/generate_password?use_symbols=false
+```
+```
+{
+  "password": "oUHDMcqBIqeD"
+}
+```
+
+### Without uppercase
+
+```
+http://127.0.0.1:5000/generate_password?use_uppercase=false
+```
+```
+{
+  "password": "*wM%D#?uwC$?"
+}
+```
+
+### With length, without symbols and uppercase
+
+```
+http://127.0.0.1:5000/generate_password?length=16&use_symbols=false&use_uppercase=false
+```
+```
+{
+  "password": "ploxfmkzvfvufvxm"
 }
 ```
